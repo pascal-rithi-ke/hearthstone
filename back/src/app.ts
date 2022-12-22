@@ -1,6 +1,5 @@
 import express from "express";
 import helmet from "helmet";
-// import cors from "cors";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 
@@ -15,7 +14,22 @@ require("dotenv").config();
 const app = express();
 
 app.use(helmet());
-// app.use(cors);
+
+app.use((_req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());

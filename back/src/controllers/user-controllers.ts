@@ -5,9 +5,8 @@ const router = Router();
 const userCtrl = require("../repositories/user-repositories");
 
 router.post("/signup", userCtrl.signup);
-
-router.get("/", (_req, res) => {
-  res.send("user route");
-});
+router.post("/login", userCtrl.login);
+router.get("/", userCtrl.getAllUsers);
+router.get("/:id", userCtrl.getOneUser);
 
 module.exports = router;
