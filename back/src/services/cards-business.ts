@@ -3,7 +3,7 @@ import { CardsRepository } from "../repositories/cards-repositories";
 
 exports.getCards =  async () => {
   try {
-    const repository = new CardsRepository(new MySQLAdapter());
+    const repository = new CardsRepository(MySQLAdapter);
     const data = await repository.getAllCards()
     return data
   } catch (error) {
