@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/mysql": "^2.15.21",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
