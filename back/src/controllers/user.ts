@@ -34,7 +34,6 @@ exports.signup = async (req: Request, res: Response) => {
       if (err) res.status(500).json({ err });
 
       if (result.length > 0) {
-        console.log("on est ici");
         res.status(400).json({ message: "Utilisateur déjà existant" });
       }
     });
@@ -45,7 +44,6 @@ exports.signup = async (req: Request, res: Response) => {
     // TODO: enlever le any
     db.query(insertRequest, [user], (err: Error, result: any) => {
       if (result.length === 0) {
-        console.log("en fait on est plutôt ici");
         res.status(400).json({ message: "Utilisateur déjà existant" });
       } else {
         res.status(201).json({ message: "Utilisateur créé" });
