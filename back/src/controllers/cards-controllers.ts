@@ -5,8 +5,9 @@ const router = Router();
 
 const cardsService = require("../services/cards-business");
 
-router.get("/", (req: Request, res: Response) => {
-  res.status(200).json(cardsService.getCards())
+router.get("/", async (req: Request, res: Response) => {
+  const data = await cardsService.getCards()
+  res.status(200).json(data)
 });
 
 module.exports = router;

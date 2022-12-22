@@ -1,21 +1,20 @@
-import { NextFunction, Request, Response } from "express";
+export class CardsRepository {
+  private adapter
 
-const dbConfig = require("../config/db");
-require("dotenv").config();
-
-exports.getCards = async () => {
-
-
+  constructor(adapter: any) {
+    this.adapter = adapter;
+  }
+  async getAllCards() {
     try {
-      const sql = "SELECT * from cards";
-      const db = dbConfig.getDB();
+      const db = this.adapter.connect();
+      const dbpromise = db.promise();
 
-      const data = await db.execute(sql);
-      console.log(data);
-      return data
+      const sql = "SELECT * from cards";
+
+      const [rows] = await dbpromise.query(sql);
+      return rows
     } catch (error) {
       console.error(error);
     }
-
- 
-};
+  }
+}
