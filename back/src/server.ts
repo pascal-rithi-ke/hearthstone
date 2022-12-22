@@ -2,7 +2,7 @@ import http from "http";
 
 const app = require("./app");
 
-app.set("port", 5000);
+app.set("port", 5760);
 
 const errorHandler = (error: { code: string; syscall: string }) => {
   console.log(error);
@@ -11,7 +11,7 @@ const errorHandler = (error: { code: string; syscall: string }) => {
   }
   const address = server.address();
   const bind =
-    typeof address === "string" ? `pipe ${address}` : `port: ${5000}`;
+    typeof address === "string" ? `pipe ${address}` : `port: ${5760}`;
   switch (error.code) {
     case "EACCES":
       console.error(`${bind} requires elevated privileges.`);
@@ -31,8 +31,8 @@ const server = http.createServer(app);
 server.on("error", errorHandler);
 server.on("listening", () => {
   const address = server.address();
-  const bind = typeof address === "string" ? "pipe " + address : "port " + 5000;
-  console.info(`Disponible sur http://localhost:${5000}`);
+  const bind = typeof address === "string" ? "pipe " + address : "port " + 5760;
+  console.info(`Disponible sur http://localhost:${5760}`);
 });
 
-server.listen(5000);
+server.listen(5760);
