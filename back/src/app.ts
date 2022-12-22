@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 // Imports des routes
 const helloRoute = require("./routes/hello");
 const userRoute = require("./routes/user");
+const deckRoute = require("./routes/deck");
 
 const dbConfig = require("./config/db");
 
@@ -37,5 +38,6 @@ app.use(cookieParser());
 // Routes
 app.use("/api/hello", helloRoute);
 app.use("/api/user", userRoute);
+app.use("/api/deck", deckRoute);
 
 module.exports = app;
