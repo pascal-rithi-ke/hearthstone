@@ -1,29 +1,16 @@
-import dotenv from "dotenv";
+require("dotenv").config({ path: "./src/config/.env" });
 
-dotenv.config();
+const mysql = require("mysql2");
 
-const MYSQL_HOST = process.env.MYSQL_HOST || 'mysql21';
-const MYSQL_DATABASE = process.env.MYSQL_DATABASE || 'projethearthstone_1';
-const MYSQL_USER = process.env.MYSQL_USER || '293674@2a00:b6e0:1:210:1::1';
-const MYSQL_PASSWRD = process.env.MYSQL_PASSWRD ||  'pi7GWtyqhUYiwb8_hearthStone';
+// Paramètres de connexion à la base de données
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
 
-const MYSQL = {
-    host: MYSQL_HOST,
-    db: MYSQL_DATABASE,
-    user: MYSQL_USER,
-    passwd: MYSQL_PASSWRD
+// export pour utiliser cette connexion
+module.exports.getDB = () => {
+  return db;
 };
-
-const SERVER_HOSTNAME = process.env.SERVER_HOSTNAME || 'mysql21';
-const SERVER_PORT = process.env.SERVER_PORT || 3306;
-
-const SERVER = {
-    hostname: SERVER_HOSTNAME,
-    port: SERVER_PORT
-};
-
-const config = {
-    mysql: MYSQL,
-    server: SERVER
-}
-export default config;
