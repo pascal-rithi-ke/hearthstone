@@ -24,12 +24,29 @@ exports.signup = async (req: Request, res: Response) => {
       password: encryptedPassword,
     };
 
-    // Requête SQL
-    const sql = "INSERT INTO players SET ?";
     const db = dbConfig.getDB();
 
-    // TODO: Vérifier si l'utilisateur existe déjà, enlever le any
-    db.query(sql, [user], (err: Error, result: any) => {
+    // Vérification de l'existence de l'utilisateur
+    const selectRequest = "SELECT * FROM players WHERE username = ?";
+
+    // TODO: enlever le any
+    db.query(selectRequest, [username], async (err: Error, result: any) => {
+      if (err) {
+        res.status(500).json({ err });
+        throw err;
+      }
+
+      if (result.length > 0) {
+        res.status(400).json({ message: "Utilisateur déjà existant" });
+        throw err;
+      }
+    });
+
+    // Création d'un utilisateur
+    const insertRequest = "INSERT INTO players SET ?";
+
+    // TODO: enlever le any
+    db.query(insertRequest, [user], (err: Error, result: any) => {
       if (!result) {
         res.status(200).json({ message: "Utilisateur déjà existant" });
       } else {
