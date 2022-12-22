@@ -6,7 +6,7 @@ export default function Register() {
     const formData = new FormData(form);
     const { username, password } = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:5000/", {
+    fetch("http://localhost:5000/api/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
