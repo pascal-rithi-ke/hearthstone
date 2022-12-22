@@ -92,9 +92,11 @@ exports.login = async (req: Request, res: Response) => {
             httpOnly: true,
             maxAge: maxAge,
           });
-        }
 
-        res.status(200).json(result);
+          res.status(200).json(result);
+        } else {
+          res.status(400).json({ message: "Vos identifiants sont erronés" });
+        }
       } else {
         res.status(400).json({ message: "Vos identifiants sont erronés" });
       }
