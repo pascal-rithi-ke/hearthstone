@@ -1,4 +1,5 @@
 import { MySQLAdapter } from "../config/MySQLAdapter";
+import { Card } from "../model/Card";
 import { CardsRepository } from "../repositories/cards-repositories";
 
 exports.getCards =  async () => {
