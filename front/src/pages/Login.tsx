@@ -1,3 +1,5 @@
+import Layout from "../layouts/DefaultLayout";
+
 export default function Login() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ export default function Login() {
   };
 
   return (
-    <>
+    <Layout>
       <div>
         <h1>Connexion</h1>
       </div>
@@ -53,6 +55,6 @@ export default function Login() {
           <button type="submit">Se connecter</button>
         </form>
       </div>
-    </>
+    </Layout>
   );
 }
