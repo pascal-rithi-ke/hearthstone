@@ -1,3 +1,5 @@
+import Layout from "../layouts/DefaultLayout";
+
 export default function Register() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ export default function Register() {
   };
 
   return (
-    <>
+    <Layout>
       <div>
         <h1>Inscription</h1>
       </div>
@@ -53,6 +55,6 @@ export default function Register() {
           <button type="submit">S'inscrire</button>
         </form>
       </div>
-    </>
+    </Layout>
   );
 }
