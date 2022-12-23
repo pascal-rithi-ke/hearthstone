@@ -4,9 +4,9 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 
 // Imports des routes
-const helloRoute = require("./routes/hello");
-const userRoute = require("./routes/user");
-
+const userRoute = require("./controllers/user-controllers");
+const cardsRoute = require("./controllers/cards-controllers")
+//
 const dbConfig = require("./config/db");
 
 require("dotenv").config();
@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Routes
-app.use("/api/hello", helloRoute);
 app.use("/api/user", userRoute);
+app.use('/api/cards', cardsRoute);
 
 module.exports = app;

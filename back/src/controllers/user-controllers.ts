@@ -2,7 +2,7 @@ import { Router } from "express";
 
 const router = Router();
 
-const userCtrl = require("../controllers/user");
+const userCtrl = require("../repositories/user-repositories");
 
 router.post("/signup", userCtrl.signup);
 router.post("/login", userCtrl.login);
