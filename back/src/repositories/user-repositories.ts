@@ -106,6 +106,12 @@ exports.login = async (req: Request, res: Response) => {
   }
 };
 
+exports.logout = async (req: Request, res: Response) => {
+  // Cookie vide qui se supprime instantanément
+  res.cookie("jwt", "", { maxAge: 1 });
+  res.redirect("/");
+};
+
 exports.getAllUsers = async (_req: Request, res: Response) => {
   const sqlRequest = "SELECT * FROM players";
   const db = dbConfig.getDB();
