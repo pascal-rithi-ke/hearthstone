@@ -1,13 +1,13 @@
-export class card {
-  id: number;
-  name: string;
-  playerClass: string;
-  rarity: string;
-  cost: number;
-  type: string;
-  spell: string;
-  attack: number;
-  health: number;
+export class Card {
+  private id: number;
+  private name: string;
+  private playerClass: string;
+  private rarity: string;
+  private cost: number;
+  private type: string;
+  private spell: string;
+  private attack: number;
+  private health: number;
   
   constructor(id: number, name: string, playerClass: string, rarity: string, cost: number, type: string, spell: string, attack: number, health: number) {
     this.id = id;
